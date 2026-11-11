@@ -1,0 +1,351 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Safe Space for All Writers</title>
+<style>
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: #faf7f1;
+  color: #35291f;
+  font-family: Arial, sans-serif;
+}
+header {
+  background: white;
+  padding: 22px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  color: #e5a318;
+  font-family: Georgia, serif;
+  font-size: 23px;
+}
+nav a {
+  color: #594536;
+  text-decoration: none;
+  margin-left: 15px;
+}
+.hero {
+  min-height: 78vh;
+  background:
+    linear-gradient(90deg,rgba(29,17,9,.78),rgba(29,17,9,.24)),
+    url("writing-room.png") center/cover;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 70px 8%;
+}
+.hero-content { max-width: 650px; }
+h1, h2 { font-family: Georgia, serif; }
+h1 {
+  font-size: clamp(42px,7vw,70px);
+  line-height: 1.12;
+}
+.hero p {
+  font-size: 21px;
+  line-height: 1.7;
+}
+.btn {
+  display: inline-block;
+  padding: 17px 25px;
+  margin: 8px 8px 8px 0;
+  background: #ffb511;
+  color: #302112;
+  text-decoration: none;
+  border: 2px solid #ffb511;
+  cursor: pointer;
+  font-size: 17px;
+}
+.btn.outline {
+  background: transparent;
+  color: white;
+}
+section {
+  padding: 75px 8%;
+  max-width: 1100px;
+  margin: auto;
+}
+section h2 {
+  font-size: 38px;
+  text-align: center;
+}
+.intro {
+  text-align: center;
+  line-height: 1.7;
+  color: #716154;
+}
+form {
+  max-width: 700px;
+  margin: 35px auto;
+  background: white;
+  padding: 30px;
+  box-shadow: 0 8px 35px #392b1912;
+}
+label {
+  display: block;
+  margin-top: 20px;
+  font-weight: bold;
+}
+input, select, textarea {
+  width: 100%;
+  padding: 14px;
+  margin-top: 8px;
+  border: 1px solid #d7c9b7;
+  border-radius: 3px;
+  font: inherit;
+}
+textarea { min-height: 220px; }
+.note { color: #776a5b; font-size: 14px; }
+.filters { text-align: center; margin: 30px 0; }
+.filters button {
+  background: white;
+  border: 1px solid #e3c58e;
+  padding: 12px 17px;
+  margin: 5px;
+  cursor: pointer;
+}
+.filters button.active {
+  background: #ffb511;
+}
+.story {
+  background: white;
+  padding: 25px;
+  margin: 18px 0;
+  border-left: 4px solid #ffb511;
+}
+.story h3 { font-family: Georgia, serif; }
+footer {
+  background: #38291e;
+  color: white;
+  text-align: center;
+  padding: 35px 15px;
+}
+@media(max-width:600px) {
+  header { flex-direction: column; gap: 15px; }
+  nav a { margin: 0 8px; }
+  .hero { padding: 65px 7%; }
+  .hero p { font-size: 18px; }
+  section { padding: 55px 6%; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">✒ Safe Space for All Writers</div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#submit">Submit</a>
+    <a href="#stories">Read</a>
+  </nav>
+</header>
+
+<div class="hero" id="home">
+  <div class="hero-content">
+    <h1>A safe space for <em>every writer</em></h1>
+    <p>
+      Share your voice without fear. Submit pieces
+      anonymously, read heartfelt works from fellow
+      creators, and grow your craft in an open,
+      welcoming community.
+    </p>
+    <a class="btn" href="#submit">Submit your work</a>
+    <a class="btn outline" href="#stories">Read stories</a>
+  </div>
+</div>
+
+<section id="submit">
+  <h2>Share your writing</h2>
+  <p class="intro">
+    Your words matter. Submit a story, poem,
+    or reflection in a space where every voice
+    deserves to be heard.
+  </p>
+
+  <form id="writingForm">
+    <label for="title">Title</label>
+    <input id="title" required maxlength="150"
+      placeholder="Give your piece a title">
+
+    <label for="category">Category</label>
+    <select id="category" required>
+      <option value="">Choose a category</option>
+      <option>Poetry</option>
+      <option>Stories</option>
+      <option>Reflections</option>
+    </select>
+
+    <label for="content">Your writing</label>
+    <textarea id="content" required
+      placeholder="Let your words flow..."></textarea>
+
+    <p class="note">
+      Submissions are anonymous and reviewed
+      before being published.
+    </p>
+    <button class="btn" type="submit">
+      Submit anonymously
+    </button>
+    <p id="message" role="status"></p>
+  </form>
+</section>
+
+<section id="stories">
+  <h2>Words from our community</h2>
+  <p class="intro">
+    Explore the stories, poetry, and thoughts
+    shared by writers just like you.
+  </p>
+
+  <div class="filters">
+    <button class="active" data-filter="All">All</button>
+    <button data-filter="Poetry">Poetry</button>
+    <button data-filter="Stories">Stories</button>
+    <button data-filter="Reflections">Reflections</button>
+  </div>
+
+  <div id="storyList">
+    <p class="intro">Published writing will appear here soon.</p>
+  </div>
+</section>
+
+<footer>
+  <p>Safe Space for All Writers</p>
+  <p>Every voice deserves to be heard. ✨</p>
+</footer>
+
+<script>
+const SUPABASE_URL = "";
+const SUPABASE_ANON_KEY = "";
+
+const form = document.getElementById("writingForm");
+const message = document.getElementById("message");
+const list = document.getElementById("storyList");
+let stories = [];
+
+function headers() {
+  return {
+    "apikey": SUPABASE_ANON_KEY,
+    "Authorization": "Bearer " + SUPABASE_ANON_KEY
+  };
+}
+
+form.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
+    message.textContent =
+      "Submissions are not connected yet. Please try again later.";
+    return;
+  }
+
+  const button = form.querySelector("button");
+  button.disabled = true;
+  message.textContent = "Submitting...";
+
+  const writing = {
+    title: document.getElementById("title").value.trim(),
+    category: document.getElementById("category").value,
+    content: document.getElementById("content").value.trim(),
+    status: "pending"
+  };
+
+  try {
+    const response = await fetch(
+      SUPABASE_URL + "/rest/v1/writings",
+      {
+        method: "POST",
+        headers: {
+          ...headers(),
+          "Content-Type": "application/json",
+          "Prefer": "return=minimal"
+        },
+        body: JSON.stringify(writing)
+      }
+    );
+
+    if (!response.ok) throw new Error("Submission failed");
+
+    message.textContent =
+      "Thank you! Your writing was submitted for review.";
+    form.reset();
+  } catch (error) {
+    message.textContent =
+      "Unable to submit right now. Please try again.";
+  } finally {
+    button.disabled = false;
+  }
+});
+
+function showStories(category = "All") {
+  list.replaceChildren();
+  const filtered = stories.filter(
+    s => category === "All" || s.category === category
+  );
+
+  if (!filtered.length) {
+    const p = document.createElement("p");
+    p.className = "intro";
+    p.textContent = "No published writing in this category yet.";
+    list.appendChild(p);
+    return;
+  }
+
+  filtered.forEach(s => {
+    const article = document.createElement("article");
+    article.className = "story";
+
+    const heading = document.createElement("h3");
+    heading.textContent = s.title;
+
+    const categoryLabel = document.createElement("small");
+    categoryLabel.textContent = s.category;
+
+    const content = document.createElement("p");
+    content.style.whiteSpace = "pre-wrap";
+    content.textContent = s.content;
+
+    article.append(heading, categoryLabel, content);
+    list.appendChild(article);
+  });
+}
+
+async function loadStories() {
+  if (!SUPABASE_URL || !SUPABASE_ANON_KEY) return;
+
+  try {
+    const response = await fetch(
+      SUPABASE_URL +
+      "/rest/v1/writings?select=title,category,content" +
+      "&status=eq.published&order=created_at.desc",
+      { headers: headers() }
+    );
+
+    if (!response.ok) throw new Error("Loading failed");
+    stories = await response.json();
+    showStories();
+  } catch (error) {
+    list.textContent = "Stories are temporarily unavailable.";
+  }
+}
+
+document.querySelectorAll("[data-filter]").forEach(button => {
+  button.addEventListener("click", () => {
+    document.querySelectorAll("[data-filter]").forEach(
+      b => b.classList.remove("active")
+    );
+    button.classList.add("active");
+    showStories(button.dataset.filter);
+  });
+});
+
+loadStories();
+</script>
+</body>
+</html>
